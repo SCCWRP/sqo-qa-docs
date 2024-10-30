@@ -1,0 +1,53 @@
+<h1>Overall Integrated Site Assessment Score</h1>
+
+<p>The <code>SQOUnified</code> function calculates an integrated site assessment score by combining data from three Lines of Evidence (LOE): Benthic, Chemistry, and Toxicity. This function accepts three dataframes as arguments and outputs a comprehensive site assessment score.</p>
+
+- Integrated Site Assessment Score Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/SQOUnified.R?plain=1#L20" target="_blank">SQOUnified</a>)
+
+<p>The <code>SQOUnified</code> function requires the following dataframes as inputs:</p>
+<ul>
+    <li><code>benthic</code>: Benthic index scores dataframe</li>
+    <li><code>chem</code>: Chemistry index scores dataframe</li>
+    <li><code>tox</code>: Toxicity index scores dataframe</li>
+</ul>
+<p>Below is an example of how to call the <code>SQOUnified</code> function with sample dataframes, and how to view the output. Logs are automatically created in an RMarkdown format for each line of evidence and the integrated assessment.</p>
+
+<p>Example datasets for site assessment:</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# Display the first few rows of each input dataframe
+print(head(benthic_sampledata, 10))
+print(head(chem_sampledata, 10))
+print(head(tox_sampledata, 10))
+        </code>
+    </pre>
+</div>
+
+<br>
+
+<h2>Overall Integrated Site Assessment Score Function</h2>
+<p>Here is an example of how to use the <code>SQOUnified</code> function with sample dataframes</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# Calculate Overall Integrated Site Assessment Score
+integrated.sqo.scores <- SQOUnified(
+    benthic = benthic_sampledata,
+    chem = chem_sampledata,
+    tox = tox_sampledata
+)
+
+# print the resulting overall score
+print(integrated.sqo.scores)
+        </code>
+    </pre>
+</div>
+
+<p>
+    The output from the <code>SQOUnified</code> function will have all scores from all indices from all lines of evidence, as well as the overall integrated site assessment score. 
+    The output will also include the individual SQO scores for each line of evidence.
+</p>
+<p><b>Note</b>: If any of the <code>benthic</code>, <code>chem</code>, or <code>tox</code> dataframes are not provided, <code>SQOUnified</code> will return an error to ensure complete data for the integrated assessment.</p>

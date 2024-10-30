@@ -1,1 +1,126 @@
-# Benthic
+<h1>Benthic</h1>
+
+<p>The SQOUnified package provides several functions for analyzing benthic data:</p>
+
+- Benthic Response Index Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/BRI.R" target="_blank">BRI</a>)
+- Relative Benthic Index Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/RBI.R" target="_blank">RBI</a>)
+- Index of Biotic Integrity Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/IBI.R" target="_blank">IBI</a>)
+- RIVPACS Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/RIVPACS.R" target="_blank">RIVPACS</a>)
+- Multivariate AMBI (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/MAMBI.R" target="_blank">MAMBI</a>)
+- Benthic Integrated SQO Score Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/benthic.R" target="_blank">benthic.sqo</a>)
+
+<p>Below are examples of how to use each function, along with how to view their outputs. We will use the example dataset, <code>benthic_sampledata</code>.</p>
+
+<p>Benthic sample dataset:</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+print(head(benthic_sampledata, 10))
+        </code>
+    </pre>
+</div>
+
+<br>
+
+<h2>Benthic Response Index Function</h2>
+<p>Here is an example of how to use the <code>BRI</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# Benthic Response Index
+bri_scores <- BRI(benthic_sampledata)
+
+# print the result
+print(head(bri_scores, 7))
+        </code>
+    </pre>
+</div>
+
+<br>
+
+<h2>Relative Benthic Index Function</h2>
+<p>Here is an example of how to use the <code>RBI</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# Relative Benthic Index
+rbi_scores <- RBI(benthic_sampledata)
+
+# print the result
+print(head(rbi_scores, 7))
+        </code>
+    </pre>
+</div>
+
+<br>
+
+<h2>Index of Biotic Integrity Function</h2>
+<p>Here is an example of how to use the <code>IBI</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# Index of Biotic Integrity
+ibi_scores <- IBI(benthic_sampledata)
+
+# print the result
+print(head(ibi_scores, 7))
+        </code>
+    </pre>
+</div>
+
+<br>
+
+<h2>RIVPACS Function</h2>
+<p>Here is an example of how to use the <code>RIVPACS</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# RIVPACS
+rivpacs_scores <- RIVPACS(benthic_sampledata)
+
+# print the result
+print(head(rivpacs_scores, 7))
+        </code>
+    </pre>
+</div>
+
+<br>
+
+<h2>Multivariate AMBI Function</h2>
+<p>Here is an example of how to use the <code>MAMBI</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# MAMBI
+mambi_scores <- MAMBI(benthic_sampledata)
+
+# print the result
+print(head(mambi_scores, 7))
+        </code>
+    </pre>
+</div>
+
+<br>
+
+<h2>Benthic Integrated SQO Scores Function</h2>
+<p>Here is an example of how to use the <code>benthic.sqo</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# Integrated Benthic SQO Function
+benthic_integrated_scores <- benthic.sqo(benthic_sampledata)
+
+# print the resulting dataframe
+print(head(benthic_integrated_scores, 6))
+        </code>
+    </pre>
+</div>
+
+<p>Each function provides an output tailored to the benthic analysis it conducts, including various indices and biotic integrity scores. Together, these functions contribute to a comprehensive assessment of benthic data within the SQOUnified framework.</p>

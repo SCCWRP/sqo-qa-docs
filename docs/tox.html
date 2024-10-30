@@ -1,4 +1,404 @@
 <h1>Toxicity</h1>
 
+<p>The SQOUnified package has a few toxicity functions available for you to use</p>
 
+- Tox Summary Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/toxicity.R?plain=1#L46" target="_blank">tox.summary</a>)
+- Toxicity Integrated SQO Score Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/toxicity.R?plain=1#L486" target="_blank">tox.sqo</a>)
+
+<p>Here are some examples of the function calls and how the output would look. </p>
+<p>We will use the example dataset, <code>tox_sampledata</code></p>
+
+<p>Toxicity sample dataset:</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content">
+print(head(tox_sampledata, 10))
+</code>
+</pre>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>stationid</th>
+            <th>toxbatch</th>
+            <th>species</th>
+            <th>sampletypecode</th>
+            <th>matrix</th>
+            <th>labrep</th>
+            <th>result</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>1</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>2</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>3</td>
+            <td>95</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>4</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>5</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>1</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>2</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>3</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>4</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>5</td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+
+<h2>Tox Summary Function</h2>
+<p>Here is an example of how to use the <code>tox.summary</code> function (using the sample data)</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># Tox Summary Function
+summary <- tox.summary(tox_sampledata)
+
+# print the result
+print(head(summary, 7))</code>
+</pre>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Lab</th>
+                <th>StationID</th>
+                <th>ToxBatch</th>
+                <th>Species</th>
+                <th>FieldRep</th>
+                <th>SampleTypeCode</th>
+                <th>P Value</th>
+                <th>Mean</th>
+                <th>Pct Control</th>
+                <th>Control Adjusted Mean</th>
+                <th>Standard Deviation</th>
+                <th>Coefficient of Variance</th>
+                <th>n</th>
+                <th>SigDiff</th>
+                <th>Endpoint Method</th>
+                <th>SQO Category Value Initial</th>
+                <th>Score</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Not Recorded</td>
+                <td>B18-10000</td>
+                <td>1807RT2B.E</td>
+                <td>Eohaustorius estuarius</td>
+                <td>1</td>
+                <td>Grab</td>
+                <td>0.50000000</td>
+                <td>98.000</td>
+                <td>98.000</td>
+                <td>100.00000</td>
+                <td>2.738613</td>
+                <td>0.02794503</td>
+                <td>5</td>
+                <td>FALSE</td>
+                <td>Survival</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+            </tr>
+            <tr>
+                <td>Not Recorded</td>
+                <td>B18-10000</td>
+                <td>BMYT080118</td>
+                <td>Mytilus galloprovincialis</td>
+                <td>1</td>
+                <td>Grab</td>
+                <td>0.22069337</td>
+                <td>97.594</td>
+                <td>97.038</td>
+                <td>100.57297</td>
+                <td>1.054007</td>
+                <td>0.01079991</td>
+                <td>5</td>
+                <td>FALSE</td>
+                <td>NormDev</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+            </tr>
+            <tr>
+                <td>Not Recorded</td>
+                <td>B18-10001</td>
+                <td>18-08-018 to -020</td>
+                <td>Mytilus galloprovincialis</td>
+                <td>1</td>
+                <td>Grab</td>
+                <td>0.08844958</td>
+                <td>82.240</td>
+                <td>85.420</td>
+                <td>96.27722</td>
+                <td>3.945630</td>
+                <td>0.04797702</td>
+                <td>5</td>
+                <td>FALSE</td>
+                <td>NormDev</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+            </tr>
+            <tr>
+                <td>Not Recorded</td>
+                <td>B18-10001</td>
+                <td>1807RT2B.E</td>
+                <td>Eohaustorius estuarius</td>
+                <td>1</td>
+                <td>Grab</td>
+                <td>0.08890390</td>
+                <td>100.000</td>
+                <td>98.000</td>
+                <td>102.04082</td>
+                <td>0.000000</td>
+                <td>0.00000000</td>
+                <td>5</td>
+                <td>FALSE</td>
+                <td>Survival</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+            </tr>
+            <tr>
+                <td>Not Recorded</td>
+                <td>B18-10002</td>
+                <td>1807RT2B.E</td>
+                <td>Eohaustorius estuarius</td>
+                <td>1</td>
+                <td>Grab</td>
+                <td>0.34165800</td>
+                <td>97.000</td>
+                <td>98.000</td>
+                <td>98.97959</td>
+                <td>4.472136</td>
+                <td>0.04610449</td>
+                <td>5</td>
+                <td>FALSE</td>
+                <td>Survival</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+            </tr>
+            <tr>
+                <td>Not Recorded</td>
+                <td>B18-10002</td>
+                <td>BMYT080118</td>
+                <td>Mytilus galloprovincialis</td>
+                <td>1</td>
+                <td>Grab</td>
+                <td>0.06472883</td>
+                <td>98.520</td>
+                <td>97.038</td>
+                <td>101.52724</td>
+                <td>1.581629</td>
+                <td>0.01605389</td>
+                <td>5</td>
+                <td>FALSE</td>
+                <td>NormDev</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+            </tr>
+            <tr>
+                <td>Not Recorded</td>
+                <td>B18-10003</td>
+                <td>BEOH081718</td>
+                <td>Eohaustorius estuarius</td>
+                <td>1</td>
+                <td>Grab</td>
+                <td>0.10307550</td>
+                <td>96.000</td>
+                <td>99.000</td>
+                <td>96.96970</td>
+                <td>4.183300</td>
+                <td>0.04357604</td>
+                <td>5</td>
+                <td>FALSE</td>
+                <td>Survival</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
+<br>
+
+<h2>Integrated Tox SQO Scores Function</h2>
+<p>Here is an example of how to use the <code>tox.sqo</code> function (using the sample data)</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># Integrated Tox SQO Function
+tox.integrated.scores <- tox.sqo(tox_sampledata)
+
+# print the resulting dataframe
+print(head(tox.integrated.scores, 6))</code>
+</pre>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>StationID</th>
+                <th>Index</th>
+                <th>Score</th>
+                <th>Category</th>
+                <th>Category Score</th>
+                <th>Test Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>B18-10000</td>
+                <td>Eohaustorius Survival</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+                <td>Acute</td>
+            </tr>
+            <tr>
+                <td>B18-10000</td>
+                <td>Integrated SQO</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+                <td>&lt;NA&gt;</td>
+            </tr>
+            <tr>
+                <td>B18-10000</td>
+                <td>Mytilus NormDev</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+                <td>Sublethal</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Eohaustorius Survival</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+                <td>Acute</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Integrated SQO</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+                <td>&lt;NA&gt;</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Mytilus NormDev</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+                <td>Sublethal</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<p>
+    Notice that the SQO Categories and numeric scores are also provided as an output from this function.
+    In the above table you can see that the scores from two stations (B18-10000 and B18-10001) are provided.
+    For each station there are 3 scores provided:
+    <ul>
+        <li>Integrated SQO score (From the Toxicity Line of Evidence)</li>
+        <li>Survival score for Eohaustorius</li>
+        <li>NormDev score for Mytilus</li>
+    </ul>
+</p>
 

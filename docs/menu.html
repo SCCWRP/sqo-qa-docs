@@ -4,10 +4,37 @@
 <p>This small site is a place where you can view instructions on how to QA the R package, and each LOE has its own page:</p>
 
 <!-- This section will render as an li-->
-- [Toxicity](?loe=tox)
-- [Chemistry](?loe=chemistry)
-- [Benthic](?loe=benthic)
+<ul>
+    <li><a href="tox">Toxicity</a></li>
+    <li><a href="chemistry">Chemistry</a></li>
+    <li><a href="benthic">Benthic</a></li>
+</ul>
+
+<p>There is also a <a href="integrated">page</a> for calculating the overall integrated site assessment score from combining the 3 lines of evidence</p>
   
+<br>
+
+<h2>Overview</h2>
+<p>
+    The <a href="https://github.com/SCCWRP/SQOUnified" target="_blank">SQOUnified R Package</a>
+    is a package that is designed to help users calculate Sediment Quality Objective (SQO) Scores based on the three lines of evidence - Toxicity, Chemistry, and Benthic.
+    There is a suite of functions available in the package that can help users calculate SQO Scores, which are covered in more detail on each LOE's page.
+</p>
+<p>
+    <b>Those conducting QA on the R package will be responsible for ensuring the functions in the package are providing the correct and/or expected output.</b>
+    This will involve running the functions on the sample data provided, or any other input dataset, and comparing the output to the expected output.
+</p>
+<p>
+    You may determine what the expected output should be by any means necessary, 
+    such as the Excel Tool (downloadable <a href="https://ftp.sccwrp.org/pub/download/TOOLS/SQO/CalSQOCalcToolVer5.10.xls" target="_blank">here</a>), or any other 
+    <a href="https://www.sccwrp.org/about/research-areas/additional-research-areas/sediment-quality/sediment-quality-assessment-tools/" target="_blank">SQO Assessment Tools</a> available.
+    You may use any other methods that you wish to calculate the SQO Scores, as long as you can verify that the output is correct. Then your output should be compared with that of the R package.
+</p>
+<p>
+    <b>If you find any discrepancies between the expected output and the output from the R package, 
+    please report them to the maintainers and developers of the package at SCCWRP</b> (<a href="mailto:sqo-devs@sccwrp.org">sqo-devs@sccwrp.org</a>).
+    You may also do so by creating an issue on the <a href="https://github.com/SCCWRP/SQOUnified" target="_blank">GitHub repository</a>.
+</p>
 
 <br>
 <h2>Basic Installation Instructions</h2>
@@ -44,7 +71,18 @@ Upon loading the SQOUnified package, there will be example data available to you
 Only a subset of each example dataframe is displayed
 </p>
 
-<p>Toxicity data:</p>
+<p>
+    <b>Note</b>: <u>If you use your own input data, it should look like these sample dataframes below</u>.
+    The suite of functions available in the SQOUnified package <b>do not</b> take excel or csv paths as arguments, but rather dataframes or tibbles.
+    For use of your own data, you will need to read in your data using the appropriate R functions, 
+    and then pass the resulting dataframes to the SQOUnified functions.
+    Please note that your input data's structure should be modeled after the sample dataframes provided.
+</p>
+
+<h3>
+    <p>Toxicity data:</p>
+</h3>
+
 <div class="code-block-container">
 <button class="copy-code-button">Copy Code</button>
 <pre class="code-block">
@@ -54,6 +92,7 @@ print(head(tox_sampledata, 10))</code>
 </pre>
 </div>
 
+<div class="table-container">
 <table>
     <thead>
         <tr>
@@ -159,10 +198,14 @@ print(head(tox_sampledata, 10))</code>
         </tr>
     </tbody>
 </table>
+</div>
 
 <br>
 
-<p>Chemistry data:</p>
+<h3>
+    <p>Chemistry data:</p>
+</h3>
+
 <div class="code-block-container">
 <button class="copy-code-button">Copy Code</button>
 <pre class="code-block">
@@ -171,107 +214,143 @@ print(head(tox_sampledata, 10))</code>
 print(head(chem_sampledata, 12))</code>
 </pre>
 </div>
-<table>
-    <thead>
-        <tr>
-            <th>stationid</th>
-            <th>analytename</th>
-            <th>result</th>
-            <th>rl</th>
-            <th>mdl</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0000</td>
-            <td>Mercury</td>
-            <td>-88.0</td>
-            <td>0.0300</td>
-            <td>0.00300</td>
-        </tr>
-        <tr>
-            <td>0000</td>
-            <td>Mercury</td>
-            <td>1.32</td>
-            <td>0.0300</td>
-            <td>0.00300</td>
-        </tr>
-        <tr>
-            <td>0000</td>
-            <td>Mercury</td>
-            <td>12.0</td>
-            <td>0.0300</td>
-            <td>0.02100</td>
-        </tr>
-        <tr>
-            <td>B18-10311</td>
-            <td>Mercury</td>
-            <td>0.13</td>
-            <td>0.0171</td>
-            <td>0.00060</td>
-        </tr>
-        <tr>
-            <td>B18-10311</td>
-            <td>Mercury</td>
-            <td>0.081</td>
-            <td>0.0176</td>
-            <td>0.00062</td>
-        </tr>
-        <tr>
-            <td>B18-10165</td>
-            <td>Aluminum</td>
-            <td>-859.76</td>
-            <td>5.0000</td>
-            <td>1.00000</td>
-        </tr>
-        <tr>
-            <td>B18-10165</td>
-            <td>Aluminum</td>
-            <td>-849.76</td>
-            <td>5.0000</td>
-            <td>1.00000</td>
-        </tr>
-        <tr>
-            <td>B18-10165</td>
-            <td>Iron</td>
-            <td>-420.21</td>
-            <td>5.0000</td>
-            <td>1.00000</td>
-        </tr>
-        <tr>
-            <td>B18-10165</td>
-            <td>Iron</td>
-            <td>-320.16</td>
-            <td>5.0000</td>
-            <td>1.00000</td>
-        </tr>
-        <tr>
-            <td>B18-10165</td>
-            <td>Barium</td>
-            <td>63.36</td>
-            <td>0.0500</td>
-            <td>0.02500</td>
-        </tr>
-        <tr>
-            <td>B18-10165</td>
-            <td>Barium</td>
-            <td>64.03</td>
-            <td>0.0500</td>
-            <td>0.02500</td>
-        </tr>
-        <tr>
-            <td>B18-10165</td>
-            <td>Nickel</td>
-            <td>64.70</td>
-            <td>0.0200</td>
-            <td>0.01000</td>
-        </tr>
-        
-    </tbody>
-</table>
+<p>
+    Be mindful to not include QA sampletypes, fieldduplicates, or labreplicates which may lead to duplicates in the dataset. 
+    The chemistry functions will remove duplicates, and will issue a warning when it does so.
+</p>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>stationid</th>
+                <th>analytename</th>
+                <th>result</th>
+                <th>rl</th>
+                <th>mdl</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0000</td>
+                <td>Mercury</td>
+                <td>-88.0</td>
+                <td>0.0300</td>
+                <td>0.0030</td>
+            </tr>
+            <tr>
+                <td>B18-10311</td>
+                <td>Mercury</td>
+                <td>0.13</td>
+                <td>0.0171</td>
+                <td>0.0006</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Aluminum</td>
+                <td>859.76</td>
+                <td>5.0000</td>
+                <td>1.0000</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Iron</td>
+                <td>420.21</td>
+                <td>5.0000</td>
+                <td>1.0000</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Barium</td>
+                <td>63.36</td>
+                <td>0.0500</td>
+                <td>0.0250</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Nickel</td>
+                <td>64.70</td>
+                <td>0.0200</td>
+                <td>0.0100</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Copper</td>
+                <td>65.37</td>
+                <td>0.0050</td>
+                <td>0.0025</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Lead</td>
+                <td>65.37</td>
+                <td>0.0050</td>
+                <td>0.0025</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Zinc</td>
+                <td>66.03</td>
+                <td>0.0500</td>
+                <td>0.0250</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Antimony</td>
+                <td>66.70</td>
+                <td>0.0500</td>
+                <td>0.0250</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Beryllium</td>
+                <td>67.37</td>
+                <td>0.0500</td>
+                <td>0.0250</td>
+            </tr>
+            <tr>
+                <td>B18-10165</td>
+                <td>Chromium</td>
+                <td>68.03</td>
+                <td>0.0050</td>
+                <td>0.0025</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>
+    The chemistry data may also include additional columns such as <b>labreplicate</b>, <b>fieldduplicate</b>, <b>sampletypecode</b> and <b>units</b>.
+    If your chemistry data does not include these columns, you may receive a warning. <u>However, you may ignore the warnings if you have prepared the data correctly</u>:
+</p>
+<ul>
+    <li>Labreplicates are removed, leaving only the first replicate</li>
+    <li>Field Duplicates are removed, leaving only the first field duplicate</li>
+    <li>QA/QC Sampletypes are not included</li>
+    <li>
+        <u>Cadmium</u>, <u>Copper</u>, <u>Lead</u>, <u>Mercury</u>, and <u>Zinc</u></i> are recorded in <i>parts per <b>million</b></i>, 
+        while all other analytes are in <i>parts per <b>billion</b></i>
+    </li>
+</ul>
+
+<p>If you do include a units column in your dataframe, acceptable units to record parts per million would be</p>
+<ul>
+    <li>ppm</li>
+    <li>ug/g</li>
+    <li>ug/g dw</li>
+</ul>
+
+<p>Acceptable units to record parts per billion would be</p>
+<ul>
+    <li>ppb</li>
+    <li>ng/g</li>
+    <li>ng/g dw</li>
+</ul>
+
+
 
 <br>
-<p>Benthic data:</p>
+<h3><p>Benthic data:</p></h3>
 <div class="code-block-container">
 <button class="copy-code-button">Copy Code</button>
 <pre class="code-block">
@@ -281,6 +360,7 @@ print(head(benthic_sampledata, 10))</code>
 </pre>
 </div>
 
+<div class="table-container">
 <table>
     <thead>
         <tr>
@@ -430,3 +510,4 @@ print(head(benthic_sampledata, 10))</code>
         </tr>
     </tbody>
 </table>
+</div>

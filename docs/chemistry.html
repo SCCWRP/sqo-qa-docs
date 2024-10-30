@@ -1,1 +1,88 @@
-# Chemistry
+<h1>Chemistry</h1>
+
+<p>The SQOUnified package includes a variety of functions for chemistry data analysis:</p>
+
+- Logistic Regression Model Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/chemistry.R?plain=1#L37" target="_blank">LRM</a>)
+- Chemical Score Index Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/chemistry.R?plain=1#L477" target="_blank">CSI</a>)
+- Chemistry Integrated SQO Score Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/chemistry.R?plain=1#L996" target="_blank">chem.sqo</a>)
+- Chemistry Data Preparation Function (<a href="https://github.com/SCCWRP/SQOUnified/blob/master/R/chemistry.R?plain=1#L1332" target="_blank">chemdata_prep</a>)
+
+<p>Below are examples of how to call each function, as well as how to view the outputs. We will use the example dataset, <code>chem_sampledata</code>.</p>
+
+<p>Chemistry sample dataset:</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class="code-block-content">
+print(head(chem_sampledata, 10))
+</code>
+</pre>
+</div>
+
+<br>
+
+<h2>Chemistry Data Preparation Function</h2>
+<p>Here is an example of how to use the <code>chemdata_prep</code> function (using the sample data)</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class="code-block-content"
+># Chemistry Data Preparation
+prepared_data <- chemdata_prep(chem_sampledata)
+
+# print the result
+# just take Station B18-10001 as an example
+print(prepared_data %>% filter(StationID == 'B18-10001'))</code>
+</pre>
+</div>
+
+<br>
+
+<h2>Chemical Score Index Function</h2>
+<p>Here is an example of how to use the <code>CSI</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+<code class="code-block-content"
+># Chemical Score Index Function
+csi_scores <- CSI(chem_sampledata)
+
+# print the result
+print(head(csi_scores, 7))</code>
+</pre>
+</div>
+
+<br>
+
+<h2>Logistic Regression Model Function</h2>
+<p>Here is an example of how to use the <code>LRM</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+<code class="code-block-content"
+># Logistic Regression Model
+lrm_scores <- LRM(chem_sampledata)
+
+# print the result
+print(head(lrm_scores, 7))</code>
+</pre>
+</div>
+
+<br>
+
+<h2>Chemistry Integrated SQO Scores Function</h2>
+<p>Here is an example of how to use the <code>chem.sqo</code> function (using the sample data)</p>
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+        <code class="code-block-content"
+># Integrated Chemistry SQO Function
+chem_integrated_scores <- chem.sqo(chem_sampledata)
+
+# print the resulting dataframe
+print(head(chem_integrated_scores, 6))</code>
+</pre>
+</div>
+
+<p>Notice that each function generates output relevant to the chemistry analysis conducted, such as Chemical Score Index scores, Logistic Regression Model results, and integrated SQO scores for chemistry. The chemistry functions work together to provide a comprehensive assessment of chemical data within the SQOUnified framework.</p>
+
