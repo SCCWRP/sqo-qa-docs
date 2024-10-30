@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% if title != 'menu' %} QA docs/instructions for {{ title }} {% else %}SQOUnified QA Instructions Main Menu {% endif %}</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        
+    </head>
+    <body>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-{{ message }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="container content-wrapper">
+            <div class="markdown-content">
+                {{ content|safe }}
+            </div>
+        </div>
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <style>
+            .content-wrapper {
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .markdown-content {
+                background-color: #f8f9fa;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .code-block-container {
+                position: relative; 
+                display: inline-block; 
+                width: 100%;
+            }
+            .code-block {
+                background-color: #00161a!important;
+                padding: 10px!important;
+                border-radius: 4px!important;
+                margin-bottom: 20px!important;
+            }
+            .code-block-content {
+                font-family: monospace;
+                font-size: 14px;
+                color: #f0f4f5;
+            }
+            .copy-code-button {
+                position: absolute; 
+                right: 10px; 
+                top: 10px; 
+                z-index: 1; 
+                background-color: #025563; 
+                color: white; 
+                padding: 5px 10px; 
+                border: none; 
+                border-radius: 5px; 
+                cursor: pointer;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                font-size: 0.9em;
+                border: 1px solid #dddddd;
+            }
+            th, td {
+                padding: 5px 5px;
+                text-align: left;
+                border: 1px solid #dddddd;
+            }
+            th {
+                background-color: #dadada;
+                border-bottom: 1px solid #00161a;
+            }
+            tr:nth-child(even) {
+                background-color: #dadada;
+            }
+            tr:hover {
+                background-color: #e0f7fa;
+            }
+        </style>
+        <script>
+            function copyCode(e) {
+                console.log(e.target);
+                const code = e.target.parentElement.querySelector('.code-block-content').innerText;
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.innerText = 'Copied!';
+                    setTimeout(() => {
+                        e.target.innerText = 'Copy Code';
+                    }, 7000);
+                }).catch(err => {
+                    console.error('Error copying text: ', err);
+                });
+            }
+            document.querySelectorAll('.copy-code-button').forEach((block) => {
+                block.addEventListener('click', copyCode);
+            });
+        </script>   
+    </body>
+    </html>

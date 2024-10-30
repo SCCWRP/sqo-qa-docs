@@ -1,0 +1,432 @@
+<h1>SQOUnified R Package - QA Instructions</h1>
+<p>Hello! Thank you for all who volunteered to participate in the work of QA-ing the <a href="https://github.com/SCCWRP/SQOUnified" target="_blank">SQOUnified R Package</a>.</p>
+
+<p>This small site is a place where you can view instructions on how to QA the R package, and each LOE has its own page:</p>
+
+<!-- This section will render as an li-->
+- [Toxicity](?loe=tox)
+- [Chemistry](?loe=chemistry)
+- [Benthic](?loe=benthic)
+  
+
+<br>
+<h2>Basic Installation Instructions</h2>
+<p>These instructions assume that you already have <a href="https://cran.r-project.org/bin/windows/base/" target="_blank">R</a> and <a href="https://posit.co/download/rstudio-desktop/" target="_blank">RStudio Desktop</a> installed on your system.</p>
+
+<p>Here is a section of code that you can copy and paste that should install the R Package on your system:</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># Install the devtools package
+install.packages('devtools')
+
+# Install the SQOUnified R Package
+devtools::install_github("SCCWRP/SQOUnified")</code>
+</pre>
+</div>
+
+<br>
+<p>If you want to load the R package into your environment or current R session, you may do so by running:</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># Load the package into the current R session
+library(SQOUnified)</code>
+</pre>
+</div>
+
+<br>
+<h2>Other Basic Information</h2>
+<p>
+Upon loading the SQOUnified package, there will be example data available to you in your environment automatically. 
+Only a subset of each example dataframe is displayed
+</p>
+
+<p>Toxicity data:</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># print the toxicity sample data
+print(head(tox_sampledata, 10))</code>
+</pre>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>stationid</th>
+            <th>toxbatch</th>
+            <th>species</th>
+            <th>sampletypecode</th>
+            <th>matrix</th>
+            <th>labrep</th>
+            <th>result</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>1</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>2</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>3</td>
+            <td>95</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>4</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>CNEG</td>
+            <td>Whole Sediment</td>
+            <td>5</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>1</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>2</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>3</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>4</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>SampleA</td>
+            <td>03/02B18eea</td>
+            <td>Eohaustorius estuarius</td>
+            <td>Grab</td>
+            <td>Whole Sediment</td>
+            <td>5</td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+
+<p>Chemistry data:</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># print the chemistry sample data
+print(head(chem_sampledata, 12))</code>
+</pre>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>stationid</th>
+            <th>analytename</th>
+            <th>result</th>
+            <th>rl</th>
+            <th>mdl</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>0000</td>
+            <td>Mercury</td>
+            <td>-88.0</td>
+            <td>0.0300</td>
+            <td>0.00300</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>Mercury</td>
+            <td>1.32</td>
+            <td>0.0300</td>
+            <td>0.00300</td>
+        </tr>
+        <tr>
+            <td>0000</td>
+            <td>Mercury</td>
+            <td>12.0</td>
+            <td>0.0300</td>
+            <td>0.02100</td>
+        </tr>
+        <tr>
+            <td>B18-10311</td>
+            <td>Mercury</td>
+            <td>0.13</td>
+            <td>0.0171</td>
+            <td>0.00060</td>
+        </tr>
+        <tr>
+            <td>B18-10311</td>
+            <td>Mercury</td>
+            <td>0.081</td>
+            <td>0.0176</td>
+            <td>0.00062</td>
+        </tr>
+        <tr>
+            <td>B18-10165</td>
+            <td>Aluminum</td>
+            <td>-859.76</td>
+            <td>5.0000</td>
+            <td>1.00000</td>
+        </tr>
+        <tr>
+            <td>B18-10165</td>
+            <td>Aluminum</td>
+            <td>-849.76</td>
+            <td>5.0000</td>
+            <td>1.00000</td>
+        </tr>
+        <tr>
+            <td>B18-10165</td>
+            <td>Iron</td>
+            <td>-420.21</td>
+            <td>5.0000</td>
+            <td>1.00000</td>
+        </tr>
+        <tr>
+            <td>B18-10165</td>
+            <td>Iron</td>
+            <td>-320.16</td>
+            <td>5.0000</td>
+            <td>1.00000</td>
+        </tr>
+        <tr>
+            <td>B18-10165</td>
+            <td>Barium</td>
+            <td>63.36</td>
+            <td>0.0500</td>
+            <td>0.02500</td>
+        </tr>
+        <tr>
+            <td>B18-10165</td>
+            <td>Barium</td>
+            <td>64.03</td>
+            <td>0.0500</td>
+            <td>0.02500</td>
+        </tr>
+        <tr>
+            <td>B18-10165</td>
+            <td>Nickel</td>
+            <td>64.70</td>
+            <td>0.0200</td>
+            <td>0.01000</td>
+        </tr>
+        
+    </tbody>
+</table>
+
+<br>
+<p>Benthic data:</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># print the benthic sample data
+print(head(benthic_sampledata, 10))</code>
+</pre>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>StationID</th>
+            <th>Replicate</th>
+            <th>SampleDate</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>SampleDepth</th>
+            <th>Taxon</th>
+            <th>Abundance</th>
+            <th>Salinity</th>
+            <th>Stratum</th>
+            <th>Exclude</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Theora lubrica</td>
+            <td>2</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Amphideutopus oculatus</td>
+            <td>1</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Amphipholis squamata</td>
+            <td>3</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Amphiuridae</td>
+            <td>2</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Anoplodactylus viridintestinalis</td>
+            <td>4</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Asthenothaerus diegensis</td>
+            <td>2</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Chondrochelia dubia Cmplx</td>
+            <td>1</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Crepidula fornicata</td>
+            <td>1</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Crucibulum spinosum</td>
+            <td>2</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>B18-10130</td>
+            <td>1</td>
+            <td>2018-08-07 00:00:00</td>
+            <td>32.7</td>
+            <td>-117.0</td>
+            <td>10</td>
+            <td>Diplocirrus sp SD1</td>
+            <td>3</td>
+            <td>NA</td>
+            <td>Ports</td>
+            <td>No</td>
+        </tr>
+    </tbody>
+</table>
