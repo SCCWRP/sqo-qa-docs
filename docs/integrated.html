@@ -179,3 +179,34 @@ print(integrated.sqo.scores %>% filter(StationID == 'B18-10001') )
     The output will also include the individual SQO scores for each line of evidence.
 </p>
 <p><b>Note</b>: If any of the <code>benthic</code>, <code>chem</code>, or <code>tox</code> dataframes are not provided, <code>SQOUnified</code> will return an error to ensure complete data for the integrated assessment.</p>
+
+<br>
+<h2>Code example - from installation to integrated site assessment scores</h2>
+<p>
+    
+</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># Install the devtools package
+install.packages('devtools')
+
+# Install the SQOUnified R Package
+devtools::install_github("SCCWRP/SQOUnified")
+
+# Load the SQOUnified package
+library(SQOUnified)
+
+
+
+# Calculate Overall Integrated Site Assessment Score
+integrated.sqo.scores <- SQOUnified(
+    benthic = benthic_sampledata,
+    chem = chem_sampledata,
+    tox = tox_sampledata
+)
+
+integrated.sqo.scores</code>
+</pre>
+</div>

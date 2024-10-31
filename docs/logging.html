@@ -20,4 +20,68 @@ tox_scores <- tox.sqo(tox_data, verbose = TRUE)</code>
 
 <p>By default, this will create a folder called "logs" in the working directory in which you ran the code</p>
 <p><b>Note</b>: You can see what your current working directory is by running <code>getwd()</code> in the R console</p>
-<img src="/sqo-qa-docs/static/getwd.png" alt="getwd" style="width: 100%; height: auto;" />
+<img src="/sqo-qa-docs/static/getwd.png" alt="getwd" />
+
+<p>In the above photo, the example user (robertb) is running his SQO calculations in the Documents folder. Lets see what happens when he calls a function with verbose logging turned on</p>
+<img src="/sqo-qa-docs/static/sqounified_withlogging.png" alt="SQOUnified With Logging" />
+
+<p>
+    As you can see, the SQOUnified function was called, with <code>verbose=TRUE</code>.
+    There were some warnings about the Chemistry data (but he will ignore them because he checked and made sure his values were in the correct units, and that not QA/QC data was included, 
+    nor were there duplicates).
+</p>
+
+<br>
+
+<img src="/sqo-qa-docs/static/documentsfolderwithlogs.png" alt="Documents Folder" />
+
+<p>
+    As you can see, the logs folder is created in the working directory (~/Documents/sqocalc), and a subfolder is created with the current date and time. 
+    Within that folder, there are the Benthic, Chemistry, and Toxicity log folders (since we called SQOUnified, and multiple LOE's were ran).
+</p>
+
+<br>
+
+<img src="/sqo-qa-docs/static/toxlogfolder.png" alt="Tox Logs Folder" />
+
+<p>
+    In the above photo, you will see that I have clicked into the Toxicity folder. The main file that you will be interested in is at the bottom right - toxlog.Rmd. 
+    See below for an example of what this file looks like.
+</p>
+
+<br>
+
+<img src="/sqo-qa-docs/static/toxlogRmdExample.png" alt="Tox Logs Rmd Example" />
+
+<br><br>
+
+<p>
+    Each "chunk" of the R markdown is a section of the code that was executed in calculating your results. This will allow you to view input and output of each step. 
+    Clicking the green play button on the right side of a "chunk" will run that code in the R console.
+</p>
+
+<img src="/sqo-qa-docs/static/runchunk.png" alt="Tox Logs Rmd Example" />
+
+<br><br>
+
+<p>
+    Clicking the "Knit" button (at the top) will render the R markdown into a more readable format.
+</p>
+
+
+<img src="/sqo-qa-docs/static/knitexample.png" alt="Tox Logs Rmd Example" />
+
+<br><br>
+
+<p>After clicking "knit", it will convert the R markdown file into an html document, which will automatically open for you to view</p>
+<img src="/sqo-qa-docs/static/knitteddocument.png" alt="Tox Logs Rmd Example" style="max-width:100%" />
+
+<br><br>
+
+<p>The HTML file that gets generated is saved in the same folder as the Rmd log file:</p>
+<img src="/sqo-qa-docs/static/knittedhtmlfileinfolder.png" alt="Tox Logs Rmd Example" style="max-width:100%" />
+
+<br><br>
+
+<p>Since an HTML file gets generated and saved in that folder, you may open the "knitted" HTML file at any time by double clicking on it, or right clicking and opening it with a web browser:</p>
+<img src="/sqo-qa-docs/static/openwithchrome.png" alt="Tox Logs Rmd Example" style="max-width:100%" />

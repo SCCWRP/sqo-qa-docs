@@ -29,18 +29,22 @@
     This will involve running the functions on the sample data provided, or any other input dataset, and comparing the output to the expected output.
 </p>
 <p>
-    You may determine what the expected output should be by any means necessary, 
-    such as the Excel Tool (downloadable <a href="https://ftp.sccwrp.org/pub/download/TOOLS/SQO/CalSQOCalcToolVer5.10.xls" target="_blank">here</a>), or any other 
-    <a href="https://www.sccwrp.org/about/research-areas/additional-research-areas/sediment-quality/sediment-quality-assessment-tools/" target="_blank">SQO Assessment Tools</a> available.
-    You may use any other methods that you wish to calculate the SQO Scores, as long as you can verify that the output is correct. Then your output should be compared with that of the R package.
+    You should determine what the expected output should be using the Excel Tool (downloadable <a href="https://ftp.sccwrp.org/pub/download/TOOLS/SQO/CalSQOCalcToolVer5.10.xls" target="_blank">here</a>). 
+    The Excel tool is the most reliable method, but you may use any other methods that you wish to calculate the SQO Scores, <i>as long as you can verify that the output is correct</i>. Then, your output should be compared with that of the R package.
 </p>
 <p>
     <b>If you find any discrepancies between the expected output and the output from the R package, 
     please report them to the maintainers and developers of the package at SCCWRP</b> (<a href="mailto:sqo-devs@sccwrp.org">sqo-devs@sccwrp.org</a>).
-    You may also do so by creating an issue on the <a href="https://github.com/SCCWRP/SQOUnified" target="_blank">GitHub repository</a>.
 </p>
 <p>
     If you use your own data, please ensure that it is formatted correctly. The structure of the example data is shown below, after the "Basic Installation Instructions" section.
+</p>
+<p>
+    There is a section about enabling the verbose <a href="https://nexus.sccwrp.org/sqo-qa-docs/logging">logging</a> feature of the functions in the package, 
+    which is provided to you to have the ability to check each step of each calculation if you would like to examine them.
+</p>
+<p>
+    <u>Again, if you find discrepancies between the expected output and the output from the R package, or if you need technical support, or if you have any questions, please do not hesitate at all to reach out to the maintainers and developers of the package at SCCWRP (<a href="mailto:sqo-devs@sccwrp.org">sqo-devs@sccwrp.org</a>)</u>
 </p>
 
 <br>
@@ -61,7 +65,7 @@ devtools::install_github("SCCWRP/SQOUnified")</code>
 </div>
 
 <br>
-<p>If you want to load the R package into your environment or current R session, you may do so by running:</p>
+<p>To load the R package into your environment or current R session, you may do so by running:</p>
 <div class="code-block-container">
 <button class="copy-code-button">Copy Code</button>
 <pre class="code-block">
@@ -71,15 +75,16 @@ library(SQOUnified)</code>
 </pre>
 </div>
 
-<br>
-<h2>Other Basic Information</h2>
 <p>
 Upon loading the SQOUnified package, there will be example data available to you in your environment automatically. 
-Only a subset of each example dataframe is displayed
+Example data is shown in the next section. Only a subset of each example dataframe is displayed.
 </p>
 
+<br>
+<h2>Other Basic Information</h2>
+
 <p>
-    <b>Note</b>: <u>If you use your own input data, it should look like these sample dataframes below</u>.
+    <u>If you use your own input data, it must contain the fields that are in the sample dataframes below</u>.
     The suite of functions available in the SQOUnified package <b>do not</b> take excel or csv paths as arguments, but rather dataframes or tibbles.
     For use of your own data, you will need to read in your data using the appropriate R functions, 
     and then pass the resulting dataframes to the SQOUnified functions.
@@ -345,6 +350,8 @@ print(head(chem_sampledata, 12))</code>
     <li>ppm</li>
     <li>ug/g</li>
     <li>ug/g dw</li>
+    <li>mg/kg</li>
+    <li>mg/kg dw</li>
 </ul>
 
 <p>Acceptable units to record parts per billion would be</p>
@@ -352,6 +359,8 @@ print(head(chem_sampledata, 12))</code>
     <li>ppb</li>
     <li>ng/g</li>
     <li>ng/g dw</li>
+    <li>ug/kg</li>
+    <li>ug/kg dw</li>
 </ul>
 
 

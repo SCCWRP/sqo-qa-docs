@@ -126,7 +126,10 @@ print(head(tox_sampledata, 10))
 <br>
 
 <h2>Tox Summary Function</h2>
-<p>Here is an example of how to use the <code>tox.summary</code> function (using the sample data)</p>
+<p>
+    Here is an example of how to use the <code>tox.summary</code> function (using the sample data).
+    This function will provide means and standard deviations along with statistical output and SQO categories.
+</p>
 <div class="code-block-container">
 <button class="copy-code-button">Copy Code</button>
 <pre class="code-block">
@@ -312,7 +315,10 @@ print(head(summary, 7))</code>
 <br>
 
 <h2>Integrated Tox SQO Scores Function</h2>
-<p>Here is an example of how to use the <code>tox.sqo</code> function (using the sample data)</p>
+<p>
+    Here is an example of how to use the <code>tox.sqo</code> function (using the sample data).
+    This function will provide the SQO categories for each of the toxicity tests (per station), as well as the overall integrated SQO category for the station.
+</p>
 <div class="code-block-container">
 <button class="copy-code-button">Copy Code</button>
 <pre class="code-block">
@@ -402,3 +408,37 @@ print(head(tox.integrated.scores, 6))</code>
     </ul>
 </p>
 
+<br>
+
+<h2>Code example - from installation to integrated toxicity scores</h2>
+<p>
+    
+</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># Install the devtools package
+install.packages('devtools')
+
+# Install the SQOUnified R Package
+devtools::install_github("SCCWRP/SQOUnified")
+
+# Load the SQOUnified package
+library(SQOUnified)
+
+
+# Tox Summary Function
+summary <- tox.summary(tox_sampledata)
+
+# print the result
+print(head(summary, 7))
+
+
+# Integrated Tox SQO Function
+tox.integrated.scores <- tox.sqo(tox_sampledata)
+
+# print the resulting dataframe
+print(head(tox.integrated.scores, 6))</code>
+</pre>
+</div>

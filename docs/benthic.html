@@ -893,3 +893,66 @@ print(head(benthic_integrated_scores, 6))
 <br>
 
 <p>Each function provides an output tailored to the benthic analysis it conducts, including various indices and biotic integrity scores. Together, these functions contribute to a comprehensive assessment of benthic data within the SQOUnified framework.</p>
+
+
+<br>
+<h2>Code example - from installation to integrated benthic scores</h2>
+<p>
+    
+</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># Install the devtools package
+install.packages('devtools')
+
+# Install the SQOUnified R Package
+devtools::install_github("SCCWRP/SQOUnified")
+
+# Load the SQOUnified package
+library(SQOUnified)
+
+
+# Benthic Response Index
+bri_scores <- BRI(benthic_sampledata)
+
+# print the result
+print(head(bri_scores, 7))
+        
+
+# Relative Benthic Index
+rbi_scores <- RBI(benthic_sampledata)
+
+# print the result
+print(head(rbi_scores, 7))
+
+
+# Index of Biotic Integrity
+ibi_scores <- IBI(benthic_sampledata)
+
+# print the result
+print(head(ibi_scores, 7))
+
+
+# RIVPACS
+rivpacs_scores <- RIVPACS(benthic_sampledata)
+
+# print the result
+print(head(rivpacs_scores, 7))
+        
+
+# MAMBI
+mambi_scores <- MAMBI(benthic_sampledata)
+
+# print the result
+print(head(mambi_scores, 7))
+
+
+# Integrated Benthic SQO Function
+benthic_integrated_scores <- benthic.sqo(benthic_sampledata)
+
+# print the resulting dataframe
+benthic_integrated_scores</code>
+</pre>
+</div>

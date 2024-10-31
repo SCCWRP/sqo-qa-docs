@@ -368,3 +368,51 @@ print(head(chem_integrated_scores, 6))</code>
 
 <p>Notice that each function generates output relevant to the chemistry analysis conducted, such as Chemical Score Index scores, Logistic Regression Model results, and integrated SQO scores for chemistry. The chemistry functions work together to provide a comprehensive assessment of chemical data within the SQOUnified framework.</p>
 
+<br>
+<h2>Code example - from installation to integrated chemistry scores</h2>
+<p>
+    
+</p>
+<div class="code-block-container">
+<button class="copy-code-button">Copy Code</button>
+<pre class="code-block">
+<code class = "code-block-content"
+># Install the devtools package
+install.packages('devtools')
+
+# Install the SQOUnified R Package
+devtools::install_github("SCCWRP/SQOUnified")
+
+# Load the SQOUnified package
+library(SQOUnified)
+
+
+# Chemistry Data Preparation
+prepared_data <- chemdata_prep(chem_sampledata)
+
+# print the result
+# just take Station B18-10001 as an example
+print(prepared_data %>% filter(StationID == 'B18-10001'))
+
+
+# Chemical Score Index Function
+csi_scores <- CSI(chem_sampledata)
+
+# print the result
+print(head(csi_scores, 7))
+
+
+# Logistic Regression Model
+lrm_scores <- LRM(chem_sampledata)
+
+# print the result
+print(head(lrm_scores, 7))
+
+
+# Integrated Chemistry SQO Function
+chem_integrated_scores <- chem.sqo(chem_sampledata)
+
+# resulting dataframe
+chem_integrated_scores</code>
+</pre>
+</div>
