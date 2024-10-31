@@ -1,5 +1,5 @@
 import markdown, glob, os
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for, send_from_directory
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_APP_SECRET_KEY')
@@ -8,13 +8,19 @@ app.secret_key = os.environ.get('FLASK_APP_SECRET_KEY')
 @app.before_request
 def clean_url():
     if request.args:
-        if request.args.get('page') is None:
+        if (request.args.get('page') is None) and (request.args.get('file') is None):
             return redirect(url_for(request.endpoint, **request.view_args), code=301)
-        
+    
 
+
+@app.route('/<pagename>/<filename>', strict_slashes=False)
 @app.route('/<pagename>', strict_slashes=False)
 @app.route('/', strict_slashes=False)
-def serve_markdown(pagename="menu"):
+def serve_markdown(pagename="menu", filename=None):
+    
+    # pagename static tells us its a request for a static file (more than likely an image) rather than a documentation page
+    if pagename == "static":
+        return send_from_directory('static', filename)
     
     valid_files = [file.split('/')[-1].split('.')[0] for file in glob.glob("docs/*.html")]
     

@@ -10,7 +10,7 @@
     <li><code>chem</code>: Chemistry index scores dataframe</li>
     <li><code>tox</code>: Toxicity index scores dataframe</li>
 </ul>
-<p>Below is an example of how to call the <code>SQOUnified</code> function with sample dataframes, and how to view the output. Logs are automatically created in an RMarkdown format for each line of evidence and the integrated assessment.</p>
+<p>Below is an example of how to call the <code>SQOUnified</code> function with sample dataframes, and how to view the output.</p>
 
 <p>Example datasets for site assessment:</p>
 <div class="code-block-container">
@@ -41,10 +41,138 @@ integrated.sqo.scores <- SQOUnified(
 )
 
 # print the resulting overall score
-print(integrated.sqo.scores)
+# Just take StationID B18-10001 as an example
+print(integrated.sqo.scores %>% filter(StationID == 'B18-10001') )
         </code>
     </pre>
 </div>
+
+<p>
+    <b><u>Note</u></b>: Below is the output from the above code. It shows the site is "<b>Unimpacted</b>" based on the integration of the 3 lines of evidence.
+    Notice that the other SQO Scores from the other lines of evidence are also included in the output.
+</p>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>StationID</th>
+                <th>LOE</th>
+                <th>Index</th>
+                <th>Score</th>
+                <th>Category</th>
+                <th>Category Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>B18-10001</td>
+                <td>Benthic</td>
+                <td>BRI</td>
+                <td>12.1</td>
+                <td>Reference</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Benthic</td>
+                <td>IBI</td>
+                <td>0</td>
+                <td>Reference</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Benthic</td>
+                <td>Integrated SQO</td>
+                <td>1</td>
+                <td>Reference</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Benthic</td>
+                <td>M-AMBI</td>
+                <td>NA</td>
+                <td>NA</td>
+                <td>NA</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Benthic</td>
+                <td>RBI</td>
+                <td>0.56</td>
+                <td>Reference</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Benthic</td>
+                <td>RIVPACS</td>
+                <td>0.76</td>
+                <td>Low Disturbance</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Chemistry</td>
+                <td>CSI</td>
+                <td>1.05</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Chemistry</td>
+                <td>Integrated SQO</td>
+                <td>3</td>
+                <td>Moderate Exposure</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Chemistry</td>
+                <td>LRM</td>
+                <td>0.67</td>
+                <td>High Exposure</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td><strong>B18-10001</strong></td>
+                <td><strong>Integrated</strong></td>
+                <td><strong>Site Assessment</strong></td>
+                <td><strong>NA</strong></td>
+                <td><strong>Unimpacted</strong></td>
+                <td><strong>NA</strong></td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Toxicity</td>
+                <td>Eohaustorius Survival</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Toxicity</td>
+                <td>Integrated SQO</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Toxicity</td>
+                <td>Mytilus NormDev</td>
+                <td>1</td>
+                <td>Nontoxic</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
 
 <p>
     The output from the <code>SQOUnified</code> function will have all scores from all indices from all lines of evidence, as well as the overall integrated site assessment score. 

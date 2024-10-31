@@ -1,0 +1,67 @@
+
+
+<h1>Using Your Own Data with SQOUnified Functions</h1>
+
+<p>This guide will help you use your own data with the SQOUnified package's functions for different Lines of Evidence (LOE), including <code>tox.sqo</code>, <code>benthic.sqo</code>, <code>chemdata_prep</code>, and <code>chem.sqo</code>. Follow the steps below to load your data and apply these functions.</p>
+
+<h2>Loading Your Data</h2>
+<p>First, you need to load your data into R. This example shows how to read data from CSV and Excel files. Ensure that your data files are correctly formatted with the appropriate column names required by each function.</p>
+
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+        <code class="code-block-content">
+# Load required libraries
+library(readxl)   # For reading Excel files
+
+# Reading data from CSV
+tox_data <- read.csv("path/to/your/tox_data.csv")
+benthic_data <- read.csv("path/to/your/benthic_data.csv")
+chem_data <- read.csv("path/to/your/chem_data.csv")
+
+# Reading data from Excel
+tox_data <- read_excel("path/to/your/tox_data.xlsx", sheet = "Sheet1")
+benthic_data <- read_excel("path/to/your/benthic_data.xlsx", sheet = "Sheet1")
+chem_data <- read_excel("path/to/your/chem_data.xlsx", sheet = "Sheet1")
+        </code>
+    </pre>
+</div>
+
+<p>Once your data is loaded, you can use the available functions from the package to calculate any scores you need</p>
+
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+<code class="code-block-content">
+# Load the SQOUnified package
+library(SQOUnified)
+    
+# Calculate toxicity scores using tox.sqo
+tox_scores <- tox.sqo(tox_data)
+print(head(tox_scores))
+
+
+# Calculate chem scores using chem.sqo
+chem_scores <- chem.sqo(chem_data)
+print(head(chem_scores))
+
+
+# Calculate benthic scores using benthic.sqo
+benthic_scores <- benthic.sqo(benthic_data)
+print(head(benthic_scores))
+
+
+# Calculate all scores using SQOUnified
+all.sqo <- SQOUnified(
+    benthic = benthic_data,
+    chem = chem_data,
+    tox = tox_data
+)
+print(head(all.sqo))
+</code>
+</pre>
+
+</div>
+
+
+<p><b>Note</b>: Your custom input data should be formatted in the same fashion as the sample input data, as shown on the <a href="/sqo-qa-docs">Home Page</a></p>

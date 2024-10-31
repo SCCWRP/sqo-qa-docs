@@ -36,6 +36,96 @@ print(prepared_data %>% filter(StationID == 'B18-10001'))</code>
 </pre>
 </div>
 
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>StationID</th>
+                <th>AnalyteName</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>B18-10001</td>
+                <td>4,4'-DDT</td>
+                <td>0.135</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Cadmium</td>
+                <td>1.36</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Copper</td>
+                <td>16.5</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>DDDs_total</td>
+                <td>0.5</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>DDEs_total</td>
+                <td>2.64</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>DDTs_total</td>
+                <td>0.5</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>HPAH</td>
+                <td>76.5</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>LPAH</td>
+                <td>7.86</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Lead</td>
+                <td>15.3</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Mercury</td>
+                <td>0.0402</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>PCBs_total</td>
+                <td>10.7</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>Zinc</td>
+                <td>66.4</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>alpha-Chlordane</td>
+                <td>0.09</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>gamma-Chlordane</td>
+                <td>0.09</td>
+            </tr>
+            <tr>
+                <td>B18-10001</td>
+                <td>trans-Nonachlor</td>
+                <td>0.135</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
 <br>
 
 <h2>Chemical Score Index Function</h2>
@@ -51,6 +141,72 @@ csi_scores <- CSI(chem_sampledata)
 print(head(csi_scores, 7))</code>
 </pre>
 </div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>StationID</th>
+                <th>Index</th>
+                <th>Score</th>
+                <th>Category</th>
+                <th>Category Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0000</td>
+                <td>CSI</td>
+                <td>1.18</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-001</td>
+                <td>CSI</td>
+                <td>1.11</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-002</td>
+                <td>CSI</td>
+                <td>1.05</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-003</td>
+                <td>CSI</td>
+                <td>1.05</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-004</td>
+                <td>CSI</td>
+                <td>1.05</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-005</td>
+                <td>CSI</td>
+                <td>1.05</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-006</td>
+                <td>CSI</td>
+                <td>1.05</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
 <br>
 
@@ -68,6 +224,72 @@ print(head(lrm_scores, 7))</code>
 </pre>
 </div>
 
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>StationID</th>
+                <th>Index</th>
+                <th>Score</th>
+                <th>Category</th>
+                <th>Category Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0000</td>
+                <td>LRM</td>
+                <td>0.19</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-001</td>
+                <td>LRM</td>
+                <td>0.34</td>
+                <td>Low Exposure</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>1km-002</td>
+                <td>LRM</td>
+                <td>0.27</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-003</td>
+                <td>LRM</td>
+                <td>0.35</td>
+                <td>Low Exposure</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>1km-004</td>
+                <td>LRM</td>
+                <td>0.28</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-005</td>
+                <td>LRM</td>
+                <td>0.26</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-006</td>
+                <td>LRM</td>
+                <td>0.33</td>
+                <td>Low Exposure</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
 <br>
 
 <h2>Chemistry Integrated SQO Scores Function</h2>
@@ -75,7 +297,7 @@ print(head(lrm_scores, 7))</code>
 <div class="code-block-container">
     <button class="copy-code-button">Copy Code</button>
 <pre class="code-block">
-        <code class="code-block-content"
+<code class="code-block-content"
 ># Integrated Chemistry SQO Function
 chem_integrated_scores <- chem.sqo(chem_sampledata)
 
@@ -83,6 +305,66 @@ chem_integrated_scores <- chem.sqo(chem_sampledata)
 print(head(chem_integrated_scores, 6))</code>
 </pre>
 </div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>StationID</th>
+                <th>Index</th>
+                <th>Score</th>
+                <th>Category</th>
+                <th>Category Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0000</td>
+                <td>CSI</td>
+                <td>1.18</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>0000</td>
+                <td>Integrated SQO</td>
+                <td>1</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>0000</td>
+                <td>LRM</td>
+                <td>0.19</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-001</td>
+                <td>CSI</td>
+                <td>1.11</td>
+                <td>Minimal Exposure</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1km-001</td>
+                <td>Integrated SQO</td>
+                <td>2</td>
+                <td>Low Exposure</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>1km-001</td>
+                <td>LRM</td>
+                <td>0.34</td>
+                <td>Low Exposure</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<br>
 
 <p>Notice that each function generates output relevant to the chemistry analysis conducted, such as Chemical Score Index scores, Logistic Regression Model results, and integrated SQO scores for chemistry. The chemistry functions work together to provide a comprehensive assessment of chemical data within the SQOUnified framework.</p>
 

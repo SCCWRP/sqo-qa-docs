@@ -1,0 +1,23 @@
+# Turning on Verbose Logging
+
+<p>
+    By default, the SQOUnified package functions do not log any information. 
+    However, you can turn on verbose logging to see more information about the calculations being performed. 
+    To do this, you can set the <code>verbose</code> parameter to <code>TRUE</code> when calling a function. Here's an example:
+</p>
+
+<div class="code-block-container">
+    <button class="copy-code-button">Copy Code</button>
+    <pre class="code-block">
+<code class="code-block-content">
+# Load the SQOUnified package
+library(SQOUnified)
+
+# Turn on verbose logging for the tox.sqo function
+tox_scores <- tox.sqo(tox_data, verbose = TRUE)</code>
+    </pre>
+</div>
+
+<p>By default, this will create a folder called "logs" in the working directory in which you ran the code</p>
+<p><b>Note</b>: You can see what your current working directory is by running <code>getwd()</code> in the R console</p>
+<img src="/sqo-qa-docs/static/getwd.png" alt="getwd" style="width: 100%; height: auto;" />
